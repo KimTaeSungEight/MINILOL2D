@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TransitionConditionEnum : MonoBehaviour
+namespace MiniLol.FSM
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum TransitionCondition
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        None,
+        Idle,
+        Move,
+        Attack,
     }
 }

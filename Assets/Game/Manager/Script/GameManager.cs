@@ -2,17 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace MiniLol.Manager
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        private static GameManager instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private StatDataBank _statDataBank;
+        public StatDataBank StatDataBank => _statDataBank;
+
+        [SerializeField]
+        private GameObject _test;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+
+            var testGo = GameObject.Instantiate(_test, Vector3.zero, Quaternion.identity);
+            var testUM = testGo.GetComponent<Unit.IUnitModerator>() as Unit.ChampionModerator;
+            testUM.IsControllChampion = true;
+            testUM.Init();
+        }
+
+
+        public static GameManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return instance;
+                }
+            }
+        }
     }
 }

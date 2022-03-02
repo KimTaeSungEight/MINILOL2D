@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FSMStateBase : MonoBehaviour
+namespace MiniLol.FSM
 {
-    // Start is called before the first frame update
-    void Start()
+    public abstract class FSMStateBase : MonoBehaviour, IFSMStateBase
     {
-        
-    }
+        private FSMSystem<TransitionCondition, IFSMStateBase> _fsmSystem = null;
+        public FSMSystem<TransitionCondition, IFSMStateBase> FSMSystem => _fsmSystem;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public virtual void InitState(FSMSystem<TransitionCondition, IFSMStateBase> fsmSystem)
+        {
+            this._fsmSystem = fsmSystem;
+            _unitModerator = GetComponentInParent<Unit.IUnitModerator>();
+        }
+
+        public abstract void StartState();
+        public abstract void UpdateState();
+        public abstract void EndState();
+
+        public abstract bool Transition(TransitionCondition condition);
+
+        [SerializeField]
+        private TransitionCondition condition = TransitionCondition.None;
+
+        public TransitionCondition Condition => condition;
+
+        protected Unit.IUnitModerator _unitModerator;
     }
 }

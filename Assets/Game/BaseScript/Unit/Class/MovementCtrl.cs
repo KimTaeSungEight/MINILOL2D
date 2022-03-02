@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementCtrl : MonoBehaviour
+namespace MiniLol.Unit
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MovementCtrl : MonoBehaviour, IMovement
     {
-        
-    }
+        [SerializeField]
+        protected Rigidbody2D _rigidbody2D;
+        protected float _moveSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public virtual void MovementInit(UnitStatBase unitStat)
+        {
+            //_moveSpeed = unitStat.moveSpeed.Value;
+        }
+
+
+        public virtual void Move(Vector2 dir) 
+        {
+            _rigidbody2D.MovePosition(dir);
+        }
+
+        public virtual void Stop() { }
     }
 }

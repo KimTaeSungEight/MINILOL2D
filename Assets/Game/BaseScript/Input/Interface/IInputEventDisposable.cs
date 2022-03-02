@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public interface IInputEventDisposable 
+namespace MiniLol.MiniInputSystem
 {
-
+    public interface IInputEventDisposable
+    {
+        IDisposable InputDisposable { get; }
+        void InuputSubscribe();
+        void InputDispose();
+    }
 }
