@@ -70,6 +70,11 @@ namespace MiniLol.Unit
 
             _animationCtrl.SetAnimations(_statCtrl.animatorOverride);
             _skillSlotCtrl.Init(_championId);
+
+            for (int i = 0; i < 4; i++)
+            {
+                _statCtrl.unitStat.addDamage.Subscribe(x => _skillSlotCtrl.GetSkillslot(i).ChangeAddDamage(x));
+            }
         }
     }
 }

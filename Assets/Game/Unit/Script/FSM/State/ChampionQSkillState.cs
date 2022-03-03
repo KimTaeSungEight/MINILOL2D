@@ -21,6 +21,9 @@ namespace MiniLol.FSM
 
             _animationCtrl = _unitModerator.AnimationCtrl;
             _skillSlot = _unitModerator.skillSlotCtrl.GetSkillslot(0);
+            _skillSlot.skillEndSubject.Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle))
+                .AddTo(gameObject);
+                
 
             if (_unitModerator.IsControllChampion == true)
             {
@@ -36,9 +39,12 @@ namespace MiniLol.FSM
 
         public override void UpdateState()
         {
+
         }
+
         public override void EndState()
         {
+            Debug.Log("QSkillEnd");
         }
 
         public override bool Transition(TransitionCondition condition)
@@ -63,6 +69,11 @@ namespace MiniLol.FSM
         public void InputDispose()
         {
             _inputDisposable.Dispose();
+        }
+
+        private void TestFun(UniRx.Unit unit)
+        {
+
         }
     }
 }

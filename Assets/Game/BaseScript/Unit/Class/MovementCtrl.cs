@@ -52,7 +52,7 @@ namespace MiniLol.Unit
 
         public virtual void Stop() 
         {
-            cancellationTokenSource.Cancel();
+            cancellationTokenSource?.Cancel();
             _isMovingProperty.Value = false;
             cancellationTokenSource = null;
         }

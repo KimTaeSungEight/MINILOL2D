@@ -81,7 +81,6 @@ namespace MiniLol.FSM
         {
             if (_fsmData.ContainsKey(type) == false)
             {
-                Debug.Log("type :" + type);
                 return default(State);
             }
 

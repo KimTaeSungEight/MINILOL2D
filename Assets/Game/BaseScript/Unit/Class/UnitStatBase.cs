@@ -13,12 +13,7 @@ namespace MiniLol.Unit
         public FloatReactiveProperty hp;
         public FloatReactiveProperty moveSpeed;
         public FloatReactiveProperty mp;
-        public float addDamage;
-        public float basicAttackDamage;
-        public float SkillQDamage;
-        public float SkillWDamage;
-        public float SkillEDamage;
-        public float SkillRDamage;
+        public FloatReactiveProperty addDamage;
         public float attackInterval;
 
         public AnimatorOverrideController animatorOverrideController;
