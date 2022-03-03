@@ -23,7 +23,7 @@ namespace MiniLol.MiniInputSystem
         private void Awake()
         {
             _mainCamera = Camera.main;
-
+            
             var token = this.GetCancellationTokenOnDestroy();
             InputDetectionLogic(token).Forget();
 

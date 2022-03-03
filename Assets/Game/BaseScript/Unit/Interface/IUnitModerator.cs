@@ -17,6 +17,6 @@ namespace MiniLol.Unit
 
         bool IsControllChampion { get; }
 
-        void Init();
+        void Init(int championId, bool isControllChampion);
     }
 }

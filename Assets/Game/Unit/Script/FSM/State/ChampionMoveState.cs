@@ -10,6 +10,7 @@ namespace MiniLol.FSM
     {
         private IDisposable _inputDisposable;
         private Unit.IAnimationCtrl _animationCtrl;
+        private IDisposable _moveEnd;
 
         public IDisposable InputDisposable => _inputDisposable;
 
@@ -50,8 +51,10 @@ namespace MiniLol.FSM
 
         public void InuputSubscribe()
         {
-            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.None)
-                .Subscribe(x => FSMSystem.ChangeState(TransitionCondition.Idle));
+            //_inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.None)
+            //    .Subscribe(x => FSMSystem.ChangeState(TransitionCondition.Idle));
+            _moveEnd = _unitModerator.Movement.IsMoving.Where(x => x == false)
+                .Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle));
         }
 
         public void InputDispose()

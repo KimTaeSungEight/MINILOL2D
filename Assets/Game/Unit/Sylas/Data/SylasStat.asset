@@ -17,7 +17,7 @@ MonoBehaviour:
   hp:
     value: 0
   moveSpeed:
-    value: 0
+    value: 0.1
   mp:
     value: 0
   addDamage: 0

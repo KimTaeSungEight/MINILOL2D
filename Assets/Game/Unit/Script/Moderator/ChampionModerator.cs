@@ -9,14 +9,14 @@ namespace MiniLol.Unit
     public class ChampionModerator : MonoBehaviour, IUnitModerator
     {
         // todo 나중에 private으로 바꿔서 컨트롤 해야 할 듯.
-        public bool IsControllChampion = false;
-        public int ChampionId = 0;
+        private bool _isControllChampion = false;
+        public bool IsControllChampion => _isControllChampion;
+        private int _championId = 0;
 
         private AnimationCtrl _animationCtrl;
         private MovementCtrl _movementCtrl;
         private StatCtrl _statCtrl;
         private InputEventProvider _inputEventProvider;
-
 
         public IAnimationCtrl AnimationCtrl => _animationCtrl;
 
@@ -45,8 +45,11 @@ namespace MiniLol.Unit
 
         bool IUnitModerator.IsControllChampion => IsControllChampion;
 
-        public void Init()
+        public void Init(int championId, bool isControllChampion)
         {
+            _isControllChampion = isControllChampion;
+            _championId = championId;
+
             if (IsControllChampion == true)
             {
                 _inputEventProvider = gameObject.AddComponent<InputEventProvider>();
@@ -56,7 +59,8 @@ namespace MiniLol.Unit
             _movementCtrl = GetComponent<MovementCtrl>();
             _statCtrl = GetComponent<StatCtrl>();
 
-            _statCtrl.Init(ChampionId);
+            _statCtrl.Init(_championId);
+            _movementCtrl.MovementInit(_statCtrl.unitStat);
 
             _inputEventProvider?.MoveDirection.Subscribe(x => _movementCtrl.Move(x));
 

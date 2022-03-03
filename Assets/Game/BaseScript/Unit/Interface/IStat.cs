@@ -14,5 +14,7 @@ namespace MiniLol.Unit
         IReadOnlyReactiveProperty<float> Mp { get; }
 
         AnimatorOverrideController animatorOverride { get; }
+
+        UnitStatBase unitStat { get; }
     }
 }

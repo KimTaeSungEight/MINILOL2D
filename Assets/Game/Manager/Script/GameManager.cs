@@ -28,10 +28,14 @@ namespace MiniLol.Manager
                 Destroy(this.gameObject);
             }
 
-            var testGo = GameObject.Instantiate(_test, Vector3.zero, Quaternion.identity);
+
+        }
+
+        public void CrateChampion(int championId)
+        {
+            var testGo = GameObject.Instantiate(_test, new Vector3(0, 0, -0.6f), Quaternion.identity);
             var testUM = testGo.GetComponent<Unit.IUnitModerator>() as Unit.ChampionModerator;
-            testUM.IsControllChampion = true;
-            testUM.Init();
+            testUM.Init(championId, true);
         }
 
 

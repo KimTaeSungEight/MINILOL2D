@@ -15,6 +15,8 @@ namespace MiniLol.Unit
 
         public AnimatorOverrideController animatorOverride => _unitStat.animatorOverrideController;
 
+        public UnitStatBase unitStat => _unitStat;
+
         public void Init(int id)
         {
             _unitStat = Manager.GameManager.Instance.StatDataBank.GetUnitData(id);
