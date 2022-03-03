@@ -17,6 +17,7 @@ namespace MiniLol.Unit
         private MovementCtrl _movementCtrl;
         private StatCtrl _statCtrl;
         private InputEventProvider _inputEventProvider;
+        private SkillSlotCtrl _skillSlotCtrl;
 
         public IAnimationCtrl AnimationCtrl => _animationCtrl;
 
@@ -45,6 +46,8 @@ namespace MiniLol.Unit
 
         bool IUnitModerator.IsControllChampion => IsControllChampion;
 
+        public ISkillSlotCtrl skillSlotCtrl => _skillSlotCtrl;
+
         public void Init(int championId, bool isControllChampion)
         {
             _isControllChampion = isControllChampion;
@@ -58,6 +61,7 @@ namespace MiniLol.Unit
             _animationCtrl = GetComponent<AnimationCtrl>();
             _movementCtrl = GetComponent<MovementCtrl>();
             _statCtrl = GetComponent<StatCtrl>();
+            _skillSlotCtrl = GetComponent<SkillSlotCtrl>();
 
             _statCtrl.Init(_championId);
             _movementCtrl.MovementInit(_statCtrl.unitStat);
@@ -65,6 +69,7 @@ namespace MiniLol.Unit
             _inputEventProvider?.MoveDirection.Subscribe(x => _movementCtrl.Move(x));
 
             _animationCtrl.SetAnimations(_statCtrl.animatorOverride);
+            _skillSlotCtrl.Init(_championId);
         }
     }
 }

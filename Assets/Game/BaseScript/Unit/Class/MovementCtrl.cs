@@ -39,10 +39,12 @@ namespace MiniLol.Unit
 
             if(_isMovingProperty.Value == true)
             {
-                Debug.Log("IsMoving");
                 Stop();
+            }
+
+            if (cancellationTokenSource == null)
+            {
                 cancellationTokenSource = new CancellationTokenSource();
-                Debug.Log("IsMoving after");
             }
 
             MoveTask(cancellationTokenSource.Token, targetPos).Forget();
@@ -52,6 +54,7 @@ namespace MiniLol.Unit
         {
             cancellationTokenSource.Cancel();
             _isMovingProperty.Value = false;
+            cancellationTokenSource = null;
         }
 
         private async UniTaskVoid MoveTask(CancellationToken ct, Vector2 targetPos)

@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillDataBase : MonoBehaviour
+namespace MiniLol.Unit.Skill
 {
-    // Start is called before the first frame update
-    void Start()
+    public abstract class SkillDataBase : ScriptableObject
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public int skillId;
+        public int skillChampionId;
+        public int skillSlotId;
+        public int skillDamage;
+        public string skillName;
+        public string skillDescription;
+        public Sprite skillSprite;
     }
 }

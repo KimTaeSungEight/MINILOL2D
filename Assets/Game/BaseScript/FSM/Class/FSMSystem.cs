@@ -55,7 +55,7 @@ namespace MiniLol.FSM
             _fsmData.Add(type, fsmState);
         }
 
-        public void ChangeState(EnumType state)
+        public virtual void ChangeState(EnumType state)
         {
             if (_fsmData.ContainsKey(state) == false)
                 return;
@@ -80,7 +80,10 @@ namespace MiniLol.FSM
         protected State GetState(EnumType type)
         {
             if (_fsmData.ContainsKey(type) == false)
+            {
+                Debug.Log("type :" + type);
                 return default(State);
+            }
 
             return _fsmData[type];
         }

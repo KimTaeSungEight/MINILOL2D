@@ -533,6 +533,7 @@ GameObject:
   - component: {fileID: 825785491}
   - component: {fileID: 825785490}
   - component: {fileID: 825785489}
+  - component: {fileID: 825785492}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -567,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statDataBank: {fileID: 825785489}
+  _skillDataBank: {fileID: 825785492}
   _test: {fileID: 6885792472977940342, guid: 02b8c16bbc970c042978b9c02dd6d749, type: 3}
 --- !u!4 &825785491
 Transform:
@@ -582,6 +584,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825785492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825785488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ddec915e8bd4447a32776ca9435e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillDataBases: []
 --- !u!1 &858653764
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +743,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 894070905}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825785490}
+        m_TargetAssemblyTypeName: MiniLol.Manager.GameManager, Assembly-CSharp
+        m_MethodName: CrateChampion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 858653764}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &894070905
 MonoBehaviour:
   m_ObjectHideFlags: 0

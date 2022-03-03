@@ -1,24 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using System;
 
 namespace MiniLol.FSM
 {
-    public class ChampionMoveState : FSMStateBase, MiniInputSystem.IInputEventDisposable
+    public class ChampionQSkillState : FSMStateBase, MiniInputSystem.IInputEventDisposable
     {
         private IDisposable _inputDisposable;
-        private Unit.IAnimationCtrl _animationCtrl;
-        private IDisposable _moveEnd;
-
         public IDisposable InputDisposable => _inputDisposable;
+
+        private Unit.IAnimationCtrl _animationCtrl;
+
+        private Unit.ISkillSlot _skillSlot;
 
         public override void InitState(FSMSystem<TransitionCondition, IFSMStateBase> fsmSystem)
         {
             base.InitState(fsmSystem);
 
             _animationCtrl = _unitModerator.AnimationCtrl;
+            _skillSlot = _unitModerator.skillSlotCtrl.GetSkillslot(0);
 
             if (_unitModerator.IsControllChampion == true)
             {
@@ -28,20 +30,15 @@ namespace MiniLol.FSM
 
         public override void StartState()
         {
-            _moveEnd = _unitModerator.Movement.IsMoving.Where(x => x == false)
-                        .Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle));
-
-            _animationCtrl.SetAniState(Unit.AnimationEnum.Move);
+            _animationCtrl.SetAniState(Unit.AnimationEnum.QSkill);
+            _skillSlot.Action();
         }
 
         public override void UpdateState()
         {
         }
-
         public override void EndState()
         {
-            _unitModerator.Movement.Stop();
-            _moveEnd?.Dispose();
         }
 
         public override bool Transition(TransitionCondition condition)
@@ -57,17 +54,15 @@ namespace MiniLol.FSM
             }
         }
 
-
         public void InuputSubscribe()
         {
-            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.Move)
+            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.QSkill)
                 .Subscribe(x => FSMSystem.ChangeState(x));
         }
 
         public void InputDispose()
         {
-            _inputDisposable?.Dispose();
+            _inputDisposable.Dispose();
         }
-
     }
 }

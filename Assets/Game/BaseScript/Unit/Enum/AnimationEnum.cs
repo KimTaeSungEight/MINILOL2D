@@ -4,6 +4,9 @@ namespace MiniLol.Unit
     {
         Idle,
         Move,
-        Attack,
+        QSkill,
+        WSkill,
+        ESkill,
+        RSkill,
     }
 }

@@ -25,5 +25,20 @@ namespace MiniLol.FSM
                 states[i].InitState(this);
             }
         }
+
+        public override void ChangeState(TransitionCondition state)
+        {
+            if (state == TransitionCondition.None)
+                return;
+
+            Debug.Log("State : " + state);
+
+            if(GetState(CurrState).Transition(state) == false)
+            {
+                return;
+            }
+
+            base.ChangeState(state);
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace MiniLol.Unit
         
         IStat Stat { get; }
 
+        ISkillSlotCtrl skillSlotCtrl { get; }
+
         IDamageApplicable DamageApplicable { get; }
 
         MiniInputSystem.IInputEventProvider InputEventProvider { get; }

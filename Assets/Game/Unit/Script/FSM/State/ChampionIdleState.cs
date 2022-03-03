@@ -6,12 +6,9 @@ using UniRx;
 
 namespace MiniLol.FSM
 {
-    public class ChampionIdleState : FSMStateBase, MiniInputSystem.IInputEventDisposable
+    public class ChampionIdleState : FSMStateBase
     {
         private Unit.IAnimationCtrl _animationCtrl;
-        private IDisposable _inputDisposable;
-
-        public IDisposable InputDisposable => _inputDisposable;
 
         public override void InitState(FSMSystem<TransitionCondition, IFSMStateBase> fsmSystem)
         {
@@ -22,10 +19,6 @@ namespace MiniLol.FSM
 
         public override void StartState()
         {
-            if (_unitModerator.IsControllChampion == true)
-            {
-                InuputSubscribe();
-            }
             _animationCtrl.SetAniState(Unit.AnimationEnum.Idle);
         }
 
@@ -35,26 +28,12 @@ namespace MiniLol.FSM
 
         public override void EndState()
         {
-            if (_unitModerator.IsControllChampion == true)
-            {
-                InputDispose();
-            }
+
         }
 
         public override bool Transition(TransitionCondition condition)
         {
             return true;
-        }
-
-        public void InuputSubscribe()
-        {
-            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.Move)
-            .Subscribe(x => FSMSystem.ChangeState(x));
-        }
-
-        public void InputDispose()
-        {
-            _inputDisposable?.Dispose();
         }
     }
 }

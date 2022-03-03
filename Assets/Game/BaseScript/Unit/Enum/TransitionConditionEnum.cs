@@ -5,6 +5,9 @@ namespace MiniLol.FSM
         None,
         Idle,
         Move,
-        Attack,
+        QSkill,
+        WSkill,
+        ESkill,
+        RSkill,
     }
 }

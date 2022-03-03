@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6885792472977940347}
   - component: {fileID: 6885792472977940340}
   - component: {fileID: 6885792472977940341}
+  - component: {fileID: 5827691091760508792}
   - component: {fileID: 6885792472977940344}
   m_Layer: 0
   m_Name: Sylas
@@ -49,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c288d349564fb468ce5a1c5dc1d3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsControllChampion: 0
-  ChampionId: 0
 --- !u!114 &6885792472977940347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +88,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 6885792472977940344}
+--- !u!114 &5827691091760508792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792472977940342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbb66cbb6d088845accf3eff9c62b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &6885792472977940344
 Rigidbody2D:
   serializedVersion: 4
@@ -222,8 +233,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6885792474036124033}
   - component: {fileID: 6885792474036124038}
-  - component: {fileID: 6885792474036124039}
   - component: {fileID: 6885792474036124032}
+  - component: {fileID: 6885792474036124039}
+  - component: {fileID: 4389437879678289316}
   m_Layer: 0
   m_Name: FSM
   m_TagString: Untagged
@@ -257,25 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc440bb652aa6d4ba5c5036dbfe661c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currState: 0
+  _currState: 1
   _startState: 1
   _isInit: 0
-  states:
-  - {fileID: 6885792474036124039}
-  - {fileID: 6885792474036124032}
---- !u!114 &6885792474036124039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885792474036124034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3eb23eace9c3244fba14d09860801f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: 2
 --- !u!114 &6885792474036124032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,3 +285,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 1
+--- !u!114 &6885792474036124039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792474036124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3eb23eace9c3244fba14d09860801f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 2
+--- !u!114 &4389437879678289316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792474036124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b699d698f4172946ae5467378d6f033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 3

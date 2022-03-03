@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillDataBank : MonoBehaviour
+namespace MiniLol.Manager
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SkillDataBank : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private List<Unit.Skill.SkillDataBase> _skillDataBases;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Unit.Skill.SkillDataBase GetSkillDataBase(int slotId, int championId)
+        {
+            return _skillDataBases.Find(x => x.skillChampionId == championId && x.skillSlotId == slotId);
+        }
     }
 }

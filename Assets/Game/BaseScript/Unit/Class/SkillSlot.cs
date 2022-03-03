@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using MiniLol.Unit.Skill;
 
-public class SkillSlot : MonoBehaviour
+namespace MiniLol.Unit
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SkillSlot : ISkillSlot
     {
-        
-    }
+        private int _slotId;
+        public int SlotId => _slotId;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private FloatReactiveProperty _curCoolTime = new FloatReactiveProperty();
+        public IReadOnlyReactiveProperty<float> curCoolTime => _curCoolTime;
+
+        private SkillDataBase _skilldatabase;
+        public SkillDataBase skillDataBase => _skilldatabase;
+
+        public SkillSlot(int slotId, int championId)
+        {
+            _slotId = slotId;
+            _skilldatabase = Manager.GameManager.Instance.SkillDataBank.GetSkillDataBase(_slotId, championId);
+        }
+
+        public void Action()
+        {
+            Debug.Log("Action");
+        }
+
+
     }
 }

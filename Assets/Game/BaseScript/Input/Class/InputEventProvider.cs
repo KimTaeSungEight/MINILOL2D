@@ -36,7 +36,7 @@ namespace MiniLol.MiniInputSystem
         {
             while (!ct.IsCancellationRequested)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(1))
                 {
                     var inputPos = Input.mousePosition;
                     Ray targetRay = _mainCamera.ScreenPointToRay(inputPos);
@@ -47,11 +47,23 @@ namespace MiniLol.MiniInputSystem
                     _inputEvent.Value = TransitionCondition.Move;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    _inputEvent.Value = TransitionCondition.Attack;
-                }
 
+                if  (Input.GetKeyDown(KeyCode.Q))
+                {
+                    _inputEvent.Value = TransitionCondition.QSkill;
+                }
+                else if (Input.GetKeyDown(KeyCode.W))
+                {
+                    _inputEvent.Value= TransitionCondition.WSkill;
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    _inputEvent.Value = TransitionCondition.ESkill;
+                }
+                else if (Input.GetKeyDown(KeyCode.R))
+                {
+                    _inputEvent.Value = TransitionCondition.RSkill;
+                }
 
                 if (Input.anyKey == false)
                 {

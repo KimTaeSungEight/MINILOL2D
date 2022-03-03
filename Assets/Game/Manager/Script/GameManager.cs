@@ -11,6 +11,10 @@ namespace MiniLol.Manager
         [SerializeField]
         private StatDataBank _statDataBank;
         public StatDataBank StatDataBank => _statDataBank;
+        [SerializeField]
+        private SkillDataBank _skillDataBank;
+        public SkillDataBank SkillDataBank => _skillDataBank;
+
 
         [SerializeField]
         private GameObject _test;
