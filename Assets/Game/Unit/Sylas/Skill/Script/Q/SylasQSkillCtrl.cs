@@ -19,7 +19,7 @@ namespace MiniLol.Unit.Skill
             Progress();
         }
 
-        private void Progress()
+        public override void Progress()
         {
             Debug.Log("Skill Progress");
             CreateProjectTile();
@@ -33,16 +33,9 @@ namespace MiniLol.Unit.Skill
 
         private void CreateProjectTile()
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 createPos = Vector3.zero;
-            Ray targetRay = Camera.main.ScreenPointToRay(mousePos);
-            if (Physics.Raycast(targetRay, out RaycastHit result))
-            {
-                createPos = result.point;
-            }
+            var mousePos = Manager.GameManager.Instance.GetMousePos();
 
-            createPos.z = -0.6f;
-            var go = GameObject.Instantiate(_sylasQSkillData.ProjectTileGO, createPos, Quaternion.identity);
+            var go = GameObject.Instantiate(_sylasQSkillData.ProjectTileGO, mousePos, Quaternion.identity);
             go.GetComponent<ProjectileBase>().Init(SkillDataBase.damage);
         }
     }

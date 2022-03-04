@@ -10,6 +10,7 @@ namespace MiniLol.FSM
     {
         private IDisposable _inputDisposable;
         private Unit.IAnimationCtrl _animationCtrl;
+        private Unit.IMovement _movement;
         private IDisposable _moveEnd;
 
         public IDisposable InputDisposable => _inputDisposable;
@@ -19,6 +20,7 @@ namespace MiniLol.FSM
             base.InitState(fsmSystem);
 
             _animationCtrl = _unitModerator.AnimationCtrl;
+            _movement = _unitModerator.Movement;
 
             if (_unitModerator.IsControllChampion == true)
             {
@@ -28,10 +30,12 @@ namespace MiniLol.FSM
 
         public override void StartState()
         {
+            _animationCtrl.SetAniState(Unit.AnimationEnum.Move);
+            _movement.Move(_unitModerator.InputEventProvider.MoveDirection.Value);
+
             _moveEnd = _unitModerator.Movement.IsMoving.Where(x => x == false)
                         .Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle));
 
-            _animationCtrl.SetAniState(Unit.AnimationEnum.Move);
         }
 
         public override void UpdateState()
@@ -40,7 +44,7 @@ namespace MiniLol.FSM
 
         public override void EndState()
         {
-            _unitModerator.Movement.Stop();
+            _movement.Stop();
             _moveEnd?.Dispose();
         }
 

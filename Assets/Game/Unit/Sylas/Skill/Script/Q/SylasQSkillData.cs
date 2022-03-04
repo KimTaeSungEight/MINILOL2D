@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MiniLol.Unit.Skill
 {
-    [CreateAssetMenu(menuName = "ScriptableObject/Skill/Sylas", fileName = "SylasSkill")]
+    [CreateAssetMenu(menuName = "ScriptableObject/Skill/Sylas/Q", fileName = "SylasSkillQ")]
     public class SylasQSkillData : SkillDataBase
     {
         [SerializeField]

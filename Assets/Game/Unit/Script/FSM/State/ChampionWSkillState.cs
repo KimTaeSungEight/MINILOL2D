@@ -6,7 +6,7 @@ using UniRx;
 
 namespace MiniLol.FSM
 {
-    public class ChampionQSkillState : FSMStateBase, MiniInputSystem.IInputEventDisposable
+    public class ChampionWSkillState : FSMStateBase, MiniInputSystem.IInputEventDisposable
     {
         private IDisposable _inputDisposable;
         public IDisposable InputDisposable => _inputDisposable;
@@ -14,16 +14,20 @@ namespace MiniLol.FSM
         private Unit.IAnimationCtrl _animationCtrl;
 
         private Unit.ISkillSlot _skillSlot;
+        private bool _isSkillEnd = false;
+
 
         public override void InitState(FSMSystem<TransitionCondition, IFSMStateBase> fsmSystem)
         {
             base.InitState(fsmSystem);
 
             _animationCtrl = _unitModerator.AnimationCtrl;
-            _animationCtrl.AnimationEndEvent.Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle))
+            _animationCtrl.AnimationEndEvent.Subscribe(_ => {
+                _isSkillEnd = true;
+                FSMSystem.ChangeState(TransitionCondition.Idle);
+                })
                                       .AddTo(gameObject);
-            _skillSlot = _unitModerator.skillSlotCtrl.GetSkillslot(0);  // Q
-            
+            _skillSlot = _unitModerator.skillSlotCtrl.GetSkillslot(1);  // W
 
             if (_unitModerator.IsControllChampion == true)
             {
@@ -33,21 +37,25 @@ namespace MiniLol.FSM
 
         public override void StartState()
         {
-            _animationCtrl.SetAniState(Unit.AnimationEnum.QSkill);
+            _isSkillEnd = false;
+            _animationCtrl.SetAniState(Unit.AnimationEnum.WSkill);
             _skillSlot.Action();
         }
 
         public override void UpdateState()
         {
         }
-
         public override void EndState()
         {
-            Debug.Log("QSkillEnd");
         }
 
         public override bool Transition(TransitionCondition condition)
         {
+            if (_isSkillEnd == false)
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -61,13 +69,13 @@ namespace MiniLol.FSM
 
         public void InuputSubscribe()
         {
-            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.QSkill)
+            _inputDisposable = _unitModerator.InputEventProvider.InputEvent.Where(x => x == TransitionCondition.WSkill)
                 .Subscribe(x => FSMSystem.ChangeState(x));
         }
 
         public void InputDispose()
         {
-            _inputDisposable.Dispose();
+            _inputDisposable?.Dispose();
         }
     }
 }

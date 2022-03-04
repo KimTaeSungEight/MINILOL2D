@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3458058420131033341}
   - component: {fileID: 7618059857823020701}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 6885792474036124032}
   - component: {fileID: 6885792474036124039}
   - component: {fileID: 4389437879678289316}
+  - component: {fileID: 6711710055194870908}
   m_Layer: 0
   m_Name: FSM
   m_TagString: Untagged
@@ -397,3 +398,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 3
+--- !u!114 &6711710055194870908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792474036124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c36cf366b23e89449a15ce43ffe8e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 4

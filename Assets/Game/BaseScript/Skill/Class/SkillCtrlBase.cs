@@ -30,6 +30,8 @@ namespace MiniLol.Unit.Skill
         
         public virtual void Invoke(){ }
 
+        public virtual void Progress() { }
+
         public virtual void Release()
         {
             _skillEndSubject.OnNext(UniRx.Unit.Default);

@@ -48,6 +48,21 @@ namespace MiniLol.Manager
         }
 
 
+        public Vector3 GetMousePos()
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 createPos = Vector3.zero;
+            Ray targetRay = Camera.main.ScreenPointToRay(mousePos);
+            if (Physics.Raycast(targetRay, out RaycastHit result))
+            {
+                createPos = result.point;
+            }
+
+            createPos.z = -0.6f;
+
+            return createPos;
+        }
+
         public static GameManager Instance
         {
             get
