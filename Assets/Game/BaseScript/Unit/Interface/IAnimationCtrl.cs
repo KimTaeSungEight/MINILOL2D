@@ -17,5 +17,9 @@ namespace MiniLol.Unit
         void SetAnimationmTimeScale(float timeScale);
 
         void SetAnimations(AnimatorOverrideController overrideController);
+
+        void AnimationEnd();
+
+        System.IObservable<UniRx.Unit> AnimationEndEvent { get; }
     }
 }

@@ -10,7 +10,6 @@ namespace MiniLol.Unit
     {
         int SlotId { get; }
         IReadOnlyReactiveProperty<float> curCoolTime { get; }
-        System.IObservable<UniRx.Unit> skillEndSubject { get; }
         
         Skill.SkillDataBase skillDataBase { get; }
 

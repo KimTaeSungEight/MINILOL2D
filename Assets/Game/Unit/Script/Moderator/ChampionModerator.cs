@@ -69,12 +69,7 @@ namespace MiniLol.Unit
             _inputEventProvider?.MoveDirection.Subscribe(x => _movementCtrl.Move(x));
 
             _animationCtrl.SetAnimations(_statCtrl.animatorOverride);
-            _skillSlotCtrl.Init(_championId);
-
-            for (int i = 0; i < 4; i++)
-            {
-                _statCtrl.unitStat.addDamage.Subscribe(x => _skillSlotCtrl.GetSkillslot(i).ChangeAddDamage(x));
-            }
+            _skillSlotCtrl.Init(_championId, this);
         }
     }
 }

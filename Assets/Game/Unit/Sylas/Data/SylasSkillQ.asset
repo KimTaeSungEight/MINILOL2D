@@ -19,3 +19,4 @@ MonoBehaviour:
   skillName: SylasQ
   skillDescription: Sylas Skill Q
   skillSprite: {fileID: 21300000, guid: 07c3c5161dcb21d47b39a41f47fcc83a, type: 3}
+  _projecttileGO: {fileID: 3729803961272783099, guid: 2a8ad1ad705437a4f949ad29926a333b, type: 3}

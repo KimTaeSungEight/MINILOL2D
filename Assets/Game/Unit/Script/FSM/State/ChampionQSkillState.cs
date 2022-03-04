@@ -20,10 +20,10 @@ namespace MiniLol.FSM
             base.InitState(fsmSystem);
 
             _animationCtrl = _unitModerator.AnimationCtrl;
+            _animationCtrl.AnimationEndEvent.Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle))
+                                      .AddTo(gameObject);
             _skillSlot = _unitModerator.skillSlotCtrl.GetSkillslot(0);
-            _skillSlot.skillEndSubject.Subscribe(_ => FSMSystem.ChangeState(TransitionCondition.Idle))
-                .AddTo(gameObject);
-                
+            
 
             if (_unitModerator.IsControllChampion == true)
             {
@@ -69,11 +69,6 @@ namespace MiniLol.FSM
         public void InputDispose()
         {
             _inputDisposable.Dispose();
-        }
-
-        private void TestFun(UniRx.Unit unit)
-        {
-
         }
     }
 }

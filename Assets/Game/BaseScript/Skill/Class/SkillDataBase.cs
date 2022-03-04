@@ -13,5 +13,8 @@ namespace MiniLol.Unit.Skill
         public string skillName;
         public string skillDescription;
         public Sprite skillSprite;
+        public Damage damage;
+
+        public abstract SkillCtrlBase GetSkillCtrl(SkillObj skillObj, IUnitModerator unitModerator);
     }
 }

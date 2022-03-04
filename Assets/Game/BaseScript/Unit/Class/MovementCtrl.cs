@@ -32,11 +32,6 @@ namespace MiniLol.Unit
 
         public virtual void Move(Vector2 targetPos) 
         {
-            if(Vector2.Distance(targetPos, transform.position) < 0.1f)
-            {
-                return;
-            }
-
             if(_isMovingProperty.Value == true)
             {
                 Stop();

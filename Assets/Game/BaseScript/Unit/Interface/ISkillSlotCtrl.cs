@@ -6,7 +6,7 @@ namespace MiniLol.Unit
 {
     public interface ISkillSlotCtrl
     {
-        void Init(int championId);
+        void Init(int championId, IUnitModerator unitModerator);
 
         ISkillSlot GetSkillslot(int skillSlotId);
     }
