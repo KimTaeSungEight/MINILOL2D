@@ -9,5 +9,6 @@ namespace MiniLol.Unit
         void Init(int championId, IUnitModerator unitModerator);
 
         ISkillSlot GetSkillslot(int skillSlotId);
+
     }
 }

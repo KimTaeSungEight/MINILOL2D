@@ -30,6 +30,9 @@ namespace MiniLol.Unit
 
         public virtual void Progress()
         {
+            if (_isInit == false)
+                return;
+
             AttackAreaDetection();
             AttackDamage();
         }

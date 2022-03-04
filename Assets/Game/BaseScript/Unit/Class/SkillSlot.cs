@@ -11,6 +11,7 @@ namespace MiniLol.Unit
     {
         private int _slotId;
         public int SlotId => _slotId;
+        private int _championId;
 
         private float _addDamage;
 
@@ -27,7 +28,8 @@ namespace MiniLol.Unit
         public SkillSlot(int slotId, int championId, IUnitModerator unitModerator)
         {
             _slotId = slotId;
-            _skilldatabase = Manager.GameManager.Instance.SkillDataBank.GetSkillDataBase(_slotId, championId);
+            _championId = championId;
+            _skilldatabase = Manager.GameManager.Instance.SkillDataBank.GetSkillDataBase(_slotId, _championId);
             _unitModerator = unitModerator;
 
             _unitModerator.Stat.unitStat.addDamage.Subscribe(x => _addDamage = x);
@@ -65,5 +67,9 @@ namespace MiniLol.Unit
             return skillObejct;
         }
 
+        public void InsertSkillData(int skillId)
+        {
+            _skilldatabase = Manager.GameManager.Instance.SkillDataBank.GetSkillDataBase(skillId);
+        }
     }
 }

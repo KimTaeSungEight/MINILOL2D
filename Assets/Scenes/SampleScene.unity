@@ -725,6 +725,8 @@ MonoBehaviour:
   _skillDataBases:
   - {fileID: 11400000, guid: e7a357156e36c17458ad5a17eb5c0497, type: 2}
   - {fileID: 11400000, guid: e2c07e35c9268cc46b8595e19878c680, type: 2}
+  - {fileID: 11400000, guid: a1924b0cd607260458d7e3b2f348b824, type: 2}
+  - {fileID: 11400000, guid: 11ee64429d9cf734dbc85e6af24640d3, type: 2}
 --- !u!114 &825785493
 MonoBehaviour:
   m_ObjectHideFlags: 0

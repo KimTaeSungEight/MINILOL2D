@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86dc5c43d347a04289d8bbd5b67deb2, type: 3}
+  m_Name: SylasSkillE
+  m_EditorClassIdentifier: 
+  skillId: 2
+  skillChampionId: 0
+  skillSlotId: 2
+  skillDamage: 30
+  skillName: SylasE
+  skillDescription: Sylas Skill E
+  skillSprite: {fileID: 0}
+  _nextSkillDataId: 3
+  _nextSkillDuration: 3.5

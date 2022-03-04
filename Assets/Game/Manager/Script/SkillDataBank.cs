@@ -13,5 +13,10 @@ namespace MiniLol.Manager
         {
             return _skillDataBases.Find(x => x.skillChampionId == championId && x.skillSlotId == slotId);
         }
+
+        public Unit.Skill.SkillDataBase GetSkillDataBase(int skillId)
+        {
+            return _skillDataBases.Find(x => x.skillId == skillId);
+        }
     }
 }

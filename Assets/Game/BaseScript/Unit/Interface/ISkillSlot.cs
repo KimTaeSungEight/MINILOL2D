@@ -16,5 +16,7 @@ namespace MiniLol.Unit
         void Action();
 
         void ChangeAddDamage(float addDamage);
+
+        void InsertSkillData(int skillId);
     }
 }
