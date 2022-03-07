@@ -17,5 +17,17 @@ namespace MiniLol.Unit
         public float attackInterval;
 
         public AnimatorOverrideController animatorOverrideController;
+
+        public UnitStatBase(UnitStatBase unitStatBase)
+        {
+            id = unitStatBase.id;
+            unitName = unitStatBase.unitName;
+            hp = unitStatBase.hp;
+            moveSpeed = unitStatBase.moveSpeed;
+            mp = unitStatBase.mp;
+            addDamage = unitStatBase.addDamage;
+            attackInterval = unitStatBase.attackInterval;
+            animatorOverrideController = unitStatBase.animatorOverrideController;
+        }
     }
 }

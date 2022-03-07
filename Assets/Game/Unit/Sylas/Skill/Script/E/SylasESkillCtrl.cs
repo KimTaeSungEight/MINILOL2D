@@ -14,15 +14,25 @@ namespace MiniLol.Unit.Skill
         System.IDisposable disposable;
         System.IDisposable nextDisposable;
         private CancellationTokenSource cancellationTokenSource;
+        private AnimatorOverrideController _animatorOverrideController;
+        protected AnimationClipOverrides clipOverrides;
 
         public SylasESkillCtrl(ISkillObj skillObj, SkillDataBase skillDataBase, IUnitModerator unitModerator) : base(skillObj, skillDataBase, unitModerator){}
 
         public override void Invoke()
         {
+
             base.Invoke();
+
+            var clipInfo = UnitModerator.AnimationCtrl.Animator.GetCurrentAnimatorClipInfo(0);
+
+            Debug.Log(UnitModerator.AnimationCtrl.Animator.layerCount);
+            Debug.Log("clipInfo.Length : " + clipInfo.Length);
+            Debug.Log(clipInfo[0].clip.name);
+
             _sylasESkillData = SkillDataBase as SylasESkillData;
-            cancellationTokenSource = new CancellationTokenSource();
             ChangeOriginalAnimationClip();
+            cancellationTokenSource = new CancellationTokenSource();
             _orignalMoveSpeed = UnitModerator.Stat.unitStat.moveSpeed.Value;
             Progress();
         }
@@ -46,7 +56,22 @@ namespace MiniLol.Unit.Skill
 
         private void ChangeOriginalAnimationClip()
         {
-            UnitModerator.AnimationCtrl.SetAnimations(UnitModerator.Stat.unitStat.animatorOverrideController);
+            _animatorOverrideController = new AnimatorOverrideController(UnitModerator.AnimationCtrl.Animator.runtimeAnimatorController);
+            clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
+            _animatorOverrideController.GetOverrides(clipOverrides);
+            RuntimeAnimatorController runtimeAnimatorController = UnitModerator.AnimationCtrl.Animator.runtimeAnimatorController;
+
+            clipOverrides["Idle"] = runtimeAnimatorController.animationClips[0];
+            clipOverrides["Move"] = runtimeAnimatorController.animationClips[1];
+            clipOverrides["QSkill"] = runtimeAnimatorController.animationClips[2];
+            clipOverrides["WSkill"] = runtimeAnimatorController.animationClips[3];
+            clipOverrides["ESkill"] = runtimeAnimatorController.animationClips[4];
+            clipOverrides["RSkill"] = runtimeAnimatorController.animationClips[5];
+
+            UnitModerator.AnimationCtrl.SetAnimations(_animatorOverrideController);
+            clipOverrides["ESkill"] = _sylasESkillData.AnimationClip;
+            _animatorOverrideController.ApplyOverrides(clipOverrides);
+
         }
 
         private void InsertNextSkillData()

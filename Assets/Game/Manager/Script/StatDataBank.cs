@@ -16,7 +16,7 @@ namespace MiniLol.Manager
 
         public Unit.UnitStatBase GetUnitData(string name)
         {
-            return _unitStatBaseList.Find(x => x.name == name);
+            return new Unit.UnitStatBase(_unitStatBaseList.Find(x => x.name == name));
         }
     }
 }

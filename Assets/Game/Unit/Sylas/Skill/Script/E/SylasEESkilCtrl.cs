@@ -2,21 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>>
-{
-    public AnimationClipOverrides(int capacity) : base(capacity) { }
-
-    public AnimationClip this[string name]
-    {
-        get { return this.Find(x => x.Key.name.Equals(name)).Value; }
-        set
-        {
-            int index = this.FindIndex(x => x.Key.name.Equals(name));
-            if (index != -1)
-                this[index] = new KeyValuePair<AnimationClip, AnimationClip>(this[index].Key, value);
-        }
-    }
-}
 
 namespace MiniLol.Unit.Skill
 {
@@ -24,8 +9,6 @@ namespace MiniLol.Unit.Skill
     {
         private SylasEESkillData _sylasEESkillData;
         private AnimatorOverrideController _animatorOverrideController;
-        private AnimationClip _originalClip;
-
         protected AnimationClipOverrides clipOverrides;
 
         public SylasEESkilCtrl(ISkillObj skillObj, SkillDataBase skillDataBase, IUnitModerator unitModerator) : base(skillObj, skillDataBase, unitModerator){}
@@ -57,13 +40,15 @@ namespace MiniLol.Unit.Skill
             _animatorOverrideController = new AnimatorOverrideController(UnitModerator.AnimationCtrl.Animator.runtimeAnimatorController);
             clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
             _animatorOverrideController.GetOverrides(clipOverrides);
+            var clipInfo = UnitModerator.AnimationCtrl.Animator.GetCurrentAnimatorClipInfo(0);
+            RuntimeAnimatorController runtimeAnimatorController = UnitModerator.AnimationCtrl.Animator.runtimeAnimatorController;
 
-            clipOverrides["Idle"] = _animatorOverrideController["Idle"];
-            clipOverrides["Move"] = _animatorOverrideController["Move"];
-            clipOverrides["QSkill"] = _animatorOverrideController["QSkill"];
-            clipOverrides["WSkill"] = _animatorOverrideController["WSkill"];
-            clipOverrides["ESkill"] = _animatorOverrideController["ESkill"];
-            clipOverrides["RSkill"] = _animatorOverrideController["RSkill"];
+            clipOverrides["Idle"] = runtimeAnimatorController.animationClips[0];
+            clipOverrides["Move"] = runtimeAnimatorController.animationClips[1];
+            clipOverrides["QSkill"] = runtimeAnimatorController.animationClips[2];
+            clipOverrides["WSkill"] = runtimeAnimatorController.animationClips[3];
+            clipOverrides["ESkill"] = runtimeAnimatorController.animationClips[4];
+            clipOverrides["RSkill"] = runtimeAnimatorController.animationClips[5];
         }
 
         private void ChangeAnimationClip()

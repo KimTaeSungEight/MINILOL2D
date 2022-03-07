@@ -12,8 +12,7 @@ namespace MiniLol.Unit.Skill
         public int NextSkillDataId => _nextSkillDataId;
         [SerializeField]
         private float _nextSkillDuration;
-        public float NextSkillDuration => _nextSkillDuration; 
-
+        public float NextSkillDuration => _nextSkillDuration;
         public override SkillCtrlBase GetSkillCtrl(SkillObj skillObj, IUnitModerator unitModerator)
         {
             return new SylasESkillCtrl(skillObj, this, unitModerator);

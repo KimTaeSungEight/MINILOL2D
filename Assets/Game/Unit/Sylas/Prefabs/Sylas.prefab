@@ -324,6 +324,7 @@ GameObject:
   - component: {fileID: 4389437879678289316}
   - component: {fileID: 6711710055194870908}
   - component: {fileID: 8482443883513297456}
+  - component: {fileID: 3473184684273093121}
   m_Layer: 0
   m_Name: FSM
   m_TagString: Untagged
@@ -425,3 +426,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 5
+--- !u!114 &3473184684273093121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792474036124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714e31c61daf21f41948cc7fd374fbbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 6

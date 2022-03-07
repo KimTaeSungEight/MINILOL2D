@@ -11,7 +11,11 @@ namespace MiniLol.Unit
         // todo 나중에 private으로 바꿔서 컨트롤 해야 할 듯.
         private bool _isControllChampion = false;
         public bool IsControllChampion => _isControllChampion;
+        [SerializeField]
         private int _championId = 0;
+        [SerializeField]
+        private bool _isScarecrow = false;
+
 
         private AnimationCtrl _animationCtrl;
         private MovementCtrl _movementCtrl;
@@ -71,5 +75,13 @@ namespace MiniLol.Unit
             _animationCtrl.SetAnimations(_statCtrl.animatorOverride);
             _skillSlotCtrl.Init(_championId, this);
         }
+
+        private void Start()
+        {
+            if (_isScarecrow)
+                Init(1, false);
+        }
     }
+
+    
 }

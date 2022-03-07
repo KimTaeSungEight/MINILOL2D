@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86dc5c43d347a04289d8bbd5b67deb2, type: 3}
-  m_Name: SylasSkillE
+  m_Script: {fileID: 11500000, guid: 02666c027c255ee4b81ffd25d68560e9, type: 3}
+  m_Name: SylasSkillR
   m_EditorClassIdentifier: 
-  skillId: 2
+  skillId: 4
   skillChampionId: 0
-  skillSlotId: 2
-  skillDamage: 30
-  skillName: SylasE
-  skillDescription: Sylas Skill E
+  skillSlotId: 3
+  skillDamage: 0
+  skillCoolTime: 0
+  skillName: Sylas R
+  skillDescription: Sylas R Skill
   skillSprite: {fileID: 0}
-  _nextSkillDataId: 3
-  _nextSkillDuration: 3.5
-  _animationClip: {fileID: 7400000, guid: 51e1940caeea4fc498706bc4b467527c, type: 2}
+  _animationClip: {fileID: 7400000, guid: 5deedef4e12c07346b757e87ad48236d, type: 2}
+  _duration: 10
