@@ -16,9 +16,10 @@ MonoBehaviour:
   skillChampionId: 0
   skillSlotId: 3
   skillDamage: 0
-  skillCoolTime: 0
+  skillCoolTime: 2
   skillName: Sylas R
   skillDescription: Sylas R Skill
+  isDontCallEnd: 0
   skillSprite: {fileID: 0}
   _animationClip: {fileID: 7400000, guid: 5deedef4e12c07346b757e87ad48236d, type: 2}
   _duration: 10

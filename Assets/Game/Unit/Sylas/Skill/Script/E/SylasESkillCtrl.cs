@@ -23,13 +23,6 @@ namespace MiniLol.Unit.Skill
         {
 
             base.Invoke();
-
-            var clipInfo = UnitModerator.AnimationCtrl.Animator.GetCurrentAnimatorClipInfo(0);
-
-            Debug.Log(UnitModerator.AnimationCtrl.Animator.layerCount);
-            Debug.Log("clipInfo.Length : " + clipInfo.Length);
-            Debug.Log(clipInfo[0].clip.name);
-
             _sylasESkillData = SkillDataBase as SylasESkillData;
             ChangeOriginalAnimationClip();
             cancellationTokenSource = new CancellationTokenSource();

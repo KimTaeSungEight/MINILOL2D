@@ -16,6 +16,8 @@ MonoBehaviour:
   skillChampionId: 0
   skillSlotId: 1
   skillDamage: 20
+  skillCoolTime: 2
   skillName: SylasW
   skillDescription: Skill SylasW
   skillSprite: {fileID: 0}
+  _animationClip: {fileID: 0}

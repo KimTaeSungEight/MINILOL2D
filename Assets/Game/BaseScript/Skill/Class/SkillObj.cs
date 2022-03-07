@@ -17,16 +17,21 @@ namespace MiniLol.Unit.Skill
         public void InitSkill(SkillCtrlBase controller)
         {
             _controller = controller;
-            _controller.SkillEndObservable.Subscribe(_ => Release());
+            _controller.SkillEndObservable?.Subscribe(_ => Release());
             _controller.Invoke();
         }
 
         public void Release()
         {
             _controller = null;
-            _skillEndSubject.OnNext(UniRx.Unit.Default);
-            _skillEndSubject.OnCompleted();
+            _skillEndSubject?.OnNext(UniRx.Unit.Default);
+            //_skillEndSubject.OnCompleted();
             Manager.GameManager.Instance.SkillObjManager.EnqueueSkillObject(this);
+        }
+
+        private void OnDestroy()
+        {
+            _skillEndSubject.OnCompleted();
         }
     }
 }

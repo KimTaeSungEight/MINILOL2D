@@ -19,7 +19,8 @@ namespace MiniLol.Manager
         [SerializeField]
         private SkillObjManager _skillObjManager;
         public SkillObjManager SkillObjManager => _skillObjManager;
-
+        [SerializeField]
+        private SkillSlotPresenter _skillSlotPresenter;
 
         [SerializeField]
         private GameObject _test;
@@ -45,6 +46,13 @@ namespace MiniLol.Manager
             var testGo = GameObject.Instantiate(_test, new Vector3(0, 0, -0.6f), Quaternion.identity);
             var testUM = testGo.GetComponent<Unit.IUnitModerator>() as Unit.ChampionModerator;
             testUM.Init(championId, true);
+
+            InitSkillSlotPresenter(testUM);
+        }
+
+        private void InitSkillSlotPresenter(Unit.IUnitModerator unitModerator)
+        {
+            _skillSlotPresenter.Init(unitModerator.skillSlotCtrl);
         }
 
 

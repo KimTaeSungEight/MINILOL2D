@@ -16,9 +16,10 @@ MonoBehaviour:
   skillChampionId: 0
   skillSlotId: 2
   skillDamage: 30
+  skillCoolTime: 2
   skillName: SylasE
   skillDescription: Sylas Skill E
   skillSprite: {fileID: 0}
+  _animationClip: {fileID: 7400000, guid: 51e1940caeea4fc498706bc4b467527c, type: 2}
   _nextSkillDataId: 3
   _nextSkillDuration: 3.5
-  _animationClip: {fileID: 7400000, guid: 51e1940caeea4fc498706bc4b467527c, type: 2}

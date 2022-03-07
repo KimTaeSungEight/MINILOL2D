@@ -76,6 +76,7 @@ namespace MiniLol.Unit
             _skillSlotCtrl.Init(_championId, this);
         }
 
+        //TestCode
         private void Start()
         {
             if (_isScarecrow)

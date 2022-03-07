@@ -31,6 +31,9 @@ namespace MiniLol.FSM
             if (state == TransitionCondition.None)
                 return;
 
+            if (state == CurrState)
+                return;
+
             if(GetState(CurrState).Transition(state) == false)
             {
                 return;

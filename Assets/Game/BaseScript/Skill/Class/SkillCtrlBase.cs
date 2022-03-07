@@ -7,10 +7,10 @@ namespace MiniLol.Unit.Skill
 {
     public class SkillCtrlBase : ISkillCtrlBase
     {
-        private ISkillObj _skillObj = null;
+        protected ISkillObj _skillObj = null;
         public ISkillObj SkillObj => _skillObj;
 
-        private SkillDataBase _skillDataBase = null;
+        protected SkillDataBase _skillDataBase = null;
         public SkillDataBase SkillDataBase => _skillDataBase;
 
         private IUnitModerator _unitModerator = null;

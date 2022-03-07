@@ -33,6 +33,8 @@ namespace MiniLol.Unit.Skill
         public override void Release()
         {
             base.Release();
+            _skillDataBase = null;
+            _skillObj = null;
         }
 
         private void SaveOriginalClips()

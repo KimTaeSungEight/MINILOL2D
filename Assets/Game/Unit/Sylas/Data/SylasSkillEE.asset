@@ -16,7 +16,9 @@ MonoBehaviour:
   skillChampionId: 0
   skillSlotId: 22
   skillDamage: 0
+  skillCoolTime: 0
   skillName: Sylas EE
   skillDescription: Sylas Skill EE
+  isDontCallEnd: 1
   skillSprite: {fileID: 0}
   _animationClip: {fileID: 7400000, guid: 5deedef4e12c07346b757e87ad48236d, type: 2}
