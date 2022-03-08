@@ -52,7 +52,7 @@ namespace MiniLol.Unit
 
         public void Action()
         {
-            if(_isCoolTime == true)
+            if(_isCoolTime == true || _isCurActiveSkill == true)
             {
                 return;
             }
@@ -79,8 +79,7 @@ namespace MiniLol.Unit
             while (!ct.IsCancellationRequested && _isCoolTime)
             {
                 _curCoolTime.Value -= Time.fixedDeltaTime;
-
-                if(_curCoolTime.Value <= 0.0f)
+                if (_curCoolTime.Value <= 0.0f)
                 {
                     _isCoolTime = false;
                     _curCoolTime.Value = 0;
@@ -109,10 +108,7 @@ namespace MiniLol.Unit
             }
             Debug.Log("_isCurActiveSkill : " + _isCurActiveSkill);
 
-            if (_isCurActiveSkill == false)
-            {
-                _skillEndDisposable = skillObejct.skillEndObservable.Subscribe(_ => End());
-            }
+            _skillEndDisposable = skillObejct.skillEndObservable.Subscribe(_ => End());
             skillObejct.InitSkill(_skilldatabase.GetSkillCtrl(skillObejct, _unitModerator));
             return skillObejct;
         }

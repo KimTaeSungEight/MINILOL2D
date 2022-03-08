@@ -16,6 +16,7 @@ namespace MiniLol.Unit.Skill
         private AnimatorOverrideController _animatorOverrideController;
         protected AnimationClipOverrides clipOverrides;
         System.IDisposable nextDisposable;
+        System.IDisposable _nextSkillEndDisposable;
 
         public SylasRSkillCtrl(ISkillObj skillObj, SkillDataBase skillDataBase, IUnitModerator unitModerator) : base(skillObj, skillDataBase, unitModerator){}
 
@@ -40,7 +41,6 @@ namespace MiniLol.Unit.Skill
                 return;
             }
 
-            SetSylasRSkillSlot();
             WaitDuration(cancellationTokenSource.Token).Forget();
         }
 
@@ -67,11 +67,6 @@ namespace MiniLol.Unit.Skill
 
             return true;
 
-        }
-
-        private void SetSylasRSkillSlot()
-        {
-            UnitModerator.skillSlotCtrl.GetSkillslot(3).InsertSkillData(_targetRSkillid);
         }
 
         private void ChangeAniamtionClip()
@@ -113,16 +108,38 @@ namespace MiniLol.Unit.Skill
             _animatorOverrideController.ApplyOverrides(clipOverrides);
         }
 
-        private void InsertOriginalSkillData()
+        private void ActiveNextSkill()
         {
-            UnitModerator.skillSlotCtrl.GetSkillslot(3).InsertSkillData(_originalRSkillid);
+            var skillObj = InvokeSkill();
+        }
+
+        private void SkillEnd()
+        {
             if (cancellationTokenSource != null)
             {
                 cancellationTokenSource.Cancel();
                 cancellationTokenSource.Dispose();
                 cancellationTokenSource = null;
             }
+
+            _nextSkillEndDisposable?.Dispose();
             Release();
+        }
+
+        private ISkillObj InvokeSkill()
+        {
+            var skillObejct = Manager.GameManager.Instance.SkillObjManager.GetSkillObject();
+
+            if (skillObejct == null)
+            {
+                return null;
+            }
+
+            _nextSkillEndDisposable = skillObejct.skillEndObservable.Subscribe(_ => SkillEnd());
+            skillObejct.InitSkill(
+                Manager.GameManager.Instance.SkillDataBank.GetSkillDataBase(_targetRSkillid).
+                GetSkillCtrl(skillObejct, UnitModerator));
+            return skillObejct;
         }
 
         private async UniTaskVoid WaitDuration(CancellationToken ct)
@@ -135,7 +152,7 @@ namespace MiniLol.Unit.Skill
                 {
                     isEESkillActive = false;
                     ChangeAniamtionClip();
-                    InsertOriginalSkillData();
+                    ActiveNextSkill();
                 });
 
             await UniTask.Delay(System.TimeSpan.FromSeconds(_sylasRSkillData.Duration), false, PlayerLoopTiming.Update, ct);
@@ -143,7 +160,7 @@ namespace MiniLol.Unit.Skill
             if (isEESkillActive == false)
                 return;
 
-            InsertOriginalSkillData();
+            SkillEnd();
         }
     }
 }
