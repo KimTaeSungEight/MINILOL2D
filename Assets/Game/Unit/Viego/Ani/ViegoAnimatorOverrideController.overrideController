@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ViegoAnimatorOverrideController
+  m_Controller: {fileID: 9100000, guid: 6dfa06e77a6a5cf4aa40e2dde3d43430, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 798e4ca12d1a0984b9bc12458ea4023d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4cbf8aaf4a2e58e4e9d5cf84a00d0d79, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6e11c1c20b5608a4ba703243986ed943, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 78a3ba75b7b749d4daa350559823012d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e913796cec2efd54f975e5b7c58cbf17, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0895c14037e40444a86e640f95eabbcc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4a8ba6120144d6541b6b5352bd417f1c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2b184a449fd129c44a69d3811e5de1d9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2aff44fa48e18ef4babef50dbb372f6d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f7ef25d6902f47249ab5b65bec7d4dc6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7c7e9306922af1640a7f1b7864266edb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a0bc284b6a9a49b46b2ca71069c3ac31, type: 2}

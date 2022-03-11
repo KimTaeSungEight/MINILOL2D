@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c288d349564fb468ce5a1c5dc1d3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _championId: 0
+  _isScarecrow: 0
 --- !u!114 &6885792472977940347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +327,7 @@ GameObject:
   - component: {fileID: 6711710055194870908}
   - component: {fileID: 8482443883513297456}
   - component: {fileID: 3473184684273093121}
+  - component: {fileID: 8114584366882759872}
   m_Layer: 0
   m_Name: FSM
   m_TagString: Untagged
@@ -439,3 +442,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condition: 6
+--- !u!114 &8114584366882759872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885792474036124034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfa3fb31ea32c14c85f83a606f13416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 7

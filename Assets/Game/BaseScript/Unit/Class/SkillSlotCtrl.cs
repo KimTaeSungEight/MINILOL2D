@@ -10,7 +10,7 @@ namespace MiniLol.Unit
 
         public void Init(int championId, IUnitModerator unitModerator)
         {
-            for (int i = 0; i < 4; i++) // 스킬 슬롯이 4개인 것은 변하지 않으므로 그냥 박음.
+            for (int i = 0; i < 5; i++) // 스킬 슬롯이 4+1(패시브)개인 것은 변하지 않으므로 그냥 박음.
             {
                 _skillSlots.Add(new SkillSlot(i, championId, unitModerator));
             }

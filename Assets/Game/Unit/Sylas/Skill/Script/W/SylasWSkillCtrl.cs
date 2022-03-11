@@ -7,14 +7,11 @@ namespace MiniLol.Unit.Skill
 {
     public class SylasWSkillCtrl : SkillCtrlBase
     {
-        private float _orignalMoveSpeed = 0.0f;
-        System.IDisposable disposable;
         public SylasWSkillCtrl(ISkillObj skillObj, SkillDataBase skillDataBase, IUnitModerator unitModerator) : base(skillObj, skillDataBase, unitModerator){}
         
         public override void Invoke()
         {
             base.Invoke();
-            _orignalMoveSpeed = UnitModerator.Stat.unitStat.moveSpeed.Value;
             Progress();
         }
 
@@ -24,6 +21,8 @@ namespace MiniLol.Unit.Skill
 
             AttackLogic();
             SkillMove();
+            Release();
+
         }
 
         public override void Release()
@@ -33,14 +32,11 @@ namespace MiniLol.Unit.Skill
 
         private void SkillMove()
         {
-            UnitModerator.Stat.unitStat.moveSpeed.Value = _orignalMoveSpeed * 50.0f;
-
             var mousePos = Manager.GameManager.Instance.GetMousePos();
 
-            UnitModerator.Movement.Move(mousePos);
+            UnitModerator.Movement.Rigidbody2D.MovePosition(mousePos);
 
-            disposable = UnitModerator.Movement.IsMoving.Where(x => x == false)
-                    .Subscribe(_ => ResetValue());
+
         }
 
         private void AttackLogic()
@@ -57,14 +53,6 @@ namespace MiniLol.Unit.Skill
 
             hit.collider.GetComponent<IDamageApplicable>().ApplyDamage(SkillDataBase.damage);
 
-        }
-
-        private void ResetValue()
-        {
-            Debug.Log("ResetValue");
-            UnitModerator.Stat.unitStat.moveSpeed.Value = _orignalMoveSpeed;
-            disposable?.Dispose();
-            Release();
         }
     }
 }

@@ -17,14 +17,10 @@ MonoBehaviour:
   hp:
     value: 0
   moveSpeed:
-    value: 0.1
+    value: 0.5
   mp:
     value: 0
-  addDamage: 0
-  basicAttackDamage: 0
-  SkillQDamage: 0
-  SkillWDamage: 0
-  SkillEDamage: 0
-  SkillRDamage: 0
+  addDamage:
+    value: 0
   attackInterval: 0
   animatorOverrideController: {fileID: 22100000, guid: 0764824afa571e444acec0bd42ddec88, type: 2}

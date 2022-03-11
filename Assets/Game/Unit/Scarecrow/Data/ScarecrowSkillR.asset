@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a18218536d8dc045b80a88c11d49fef, type: 3}
   m_Name: ScarecrowSkillR
   m_EditorClassIdentifier: 
-  skillId: 5
-  skillChampionId: 1
+  skillId: 13
+  skillChampionId: 10
   skillSlotId: 3
   skillDamage: 10
+  skillCoolTime: 0
   skillName: SylasQ
   skillDescription: Sylas Skill Q
+  isDontCallEnd: 0
   skillSprite: {fileID: 21300000, guid: 07c3c5161dcb21d47b39a41f47fcc83a, type: 3}
   _animationClip: {fileID: 7400000, guid: 6bb4f447aa4111045a2e99d5b4a91f90, type: 2}
   _projecttileGO: {fileID: 3729803961272783099, guid: 2a8ad1ad705437a4f949ad29926a333b, type: 3}

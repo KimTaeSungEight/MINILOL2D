@@ -64,7 +64,11 @@ namespace MiniLol.MiniInputSystem
                 {
                     _inputEvent.Value = TransitionCondition.RSkill;
                 }
-
+                else if (Input.GetKeyDown(KeyCode.P))
+                {
+                    _inputEvent.Value = TransitionCondition.PSkill;
+                }
+                
                 if (Input.anyKey == false)
                 {
                     _inputEvent.Value = TransitionCondition.None;

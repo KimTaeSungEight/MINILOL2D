@@ -9,5 +9,6 @@ namespace MiniLol.FSM
         WSkill,
         ESkill,
         RSkill,
+        PSkill,
     }
 }

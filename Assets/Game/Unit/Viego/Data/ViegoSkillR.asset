@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d58fc6f0afd14487799181077877d, type: 3}
+  m_Name: ViegoSkillR
+  m_EditorClassIdentifier: 
+  skillId: 8
+  skillChampionId: 1
+  skillSlotId: 3
+  skillDamage: 50
+  skillCoolTime: 5
+  skillName: Viego R
+  skillDescription: Viego R Skill
+  skillSprite: {fileID: 0}
+  _animationClip: {fileID: 7400000, guid: a0bc284b6a9a49b46b2ca71069c3ac31, type: 2}
+  _attackSize: {x: 3, y: 3}

@@ -13,7 +13,6 @@ namespace MiniLol.Unit.Skill
         public float skillCoolTime;
         public string skillName;
         public string skillDescription;
-        public bool isDontCallEnd;
         public Sprite skillSprite;
         public Damage damage;
 

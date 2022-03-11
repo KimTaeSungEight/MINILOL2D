@@ -10,8 +10,6 @@ namespace MiniLol.Unit.Skill
     public class SylasESkillCtrl : SkillCtrlBase
     {
         SylasESkillData _sylasESkillData;
-        private float _orignalMoveSpeed = 0.0f;
-        System.IDisposable disposable;
         System.IDisposable nextDisposable;
         System.IDisposable _nextSkillEndDisposable;
 
@@ -28,7 +26,6 @@ namespace MiniLol.Unit.Skill
             _sylasESkillData = SkillDataBase as SylasESkillData;
             ChangeOriginalAnimationClip();
             cancellationTokenSource = new CancellationTokenSource();
-            _orignalMoveSpeed = UnitModerator.Stat.unitStat.moveSpeed.Value;
             Progress();
         }
 
@@ -119,20 +116,9 @@ namespace MiniLol.Unit.Skill
 
         private void SkillMove()
         {
-            UnitModerator.Stat.unitStat.moveSpeed.Value = _orignalMoveSpeed * 50.0f;
-
             var mousePos = Manager.GameManager.Instance.GetMousePos();
 
-            UnitModerator.Movement.Move(mousePos);
-
-            disposable = UnitModerator.Movement.IsMoving.Where(x => x == false)
-                    .Subscribe(_ => ResetValue());
-        }
-
-        private void ResetValue()
-        {
-            UnitModerator.Stat.unitStat.moveSpeed.Value = _orignalMoveSpeed;
-            disposable?.Dispose();
+            UnitModerator.Movement.Rigidbody2D.MovePosition(mousePos);
         }
     }
 }

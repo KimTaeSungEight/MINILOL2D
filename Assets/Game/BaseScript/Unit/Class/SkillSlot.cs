@@ -52,7 +52,7 @@ namespace MiniLol.Unit
 
         public void Action()
         {
-            if(_isCoolTime == true || _isCurActiveSkill == true)
+            if(_isCoolTime == true || _isCurActiveSkill == true || _skilldatabase == null)
             {
                 return;
             }

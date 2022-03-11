@@ -13,8 +13,12 @@ namespace MiniLol.Unit
         protected Rigidbody2D _rigidbody2D;
         protected float _moveSpeed;
         private BoolReactiveProperty _isMovingProperty = new BoolReactiveProperty(false);
-
+        System.IDisposable disposable;
         IReactiveProperty<bool> IMovement.IsMoving => _isMovingProperty;
+
+        public Vector3 CurPos => transform.position;
+
+        public Rigidbody2D Rigidbody2D => _rigidbody2D;
 
         private CancellationTokenSource cancellationTokenSource;
 
@@ -23,12 +27,12 @@ namespace MiniLol.Unit
             cancellationTokenSource = new CancellationTokenSource();
         }
 
-        public virtual void MovementInit(UnitStatBase unitStat)
+        public void Init(UnitStatBase unitStat)
         {
             _moveSpeed = unitStat.moveSpeed.Value;
-            unitStat.moveSpeed.Subscribe(x => _moveSpeed = x);
+            disposable?.Dispose();
+            disposable = unitStat.moveSpeed.Subscribe(x => _moveSpeed = x).AddTo(this);
         }
-
 
         public virtual void Move(Vector2 targetPos) 
         {

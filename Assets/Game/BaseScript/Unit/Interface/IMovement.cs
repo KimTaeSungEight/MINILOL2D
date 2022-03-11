@@ -9,8 +9,14 @@ namespace MiniLol.Unit
     {
         IReactiveProperty<bool> IsMoving { get; }
 
+        void Init(UnitStatBase unitStat);
+
         void Move(Vector2 dir);
 
         void Stop(); 
+
+        Vector3 CurPos { get; }
+
+        Rigidbody2D Rigidbody2D { get; }
     }
 }

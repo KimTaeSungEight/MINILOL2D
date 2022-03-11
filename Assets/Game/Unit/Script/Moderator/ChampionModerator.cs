@@ -68,7 +68,7 @@ namespace MiniLol.Unit
             _skillSlotCtrl = GetComponent<SkillSlotCtrl>();
 
             _statCtrl.Init(_championId);
-            _movementCtrl.MovementInit(_statCtrl.unitStat);
+            _movementCtrl.Init(_statCtrl.unitStat);
 
             //_inputEventProvider?.MoveDirection.Subscribe(x => _movementCtrl.Move(x));
 
@@ -80,7 +80,7 @@ namespace MiniLol.Unit
         private void Start()
         {
             if (_isScarecrow)
-                Init(1, false);
+                Init(_championId, false);
         }
     }
 

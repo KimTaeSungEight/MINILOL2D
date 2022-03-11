@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c288d349564fb468ce5a1c5dc1d3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _championId: 1
+  _championId: 0
   _isScarecrow: 1
 --- !u!1 &229819841
 GameObject:
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 776086795}
   - component: {fileID: 776086794}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Vi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -885,7 +885,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 776086795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825785490}
+        m_TargetAssemblyTypeName: MiniLol.Manager.GameManager, Assembly-CSharp
+        m_MethodName: CrateChampion
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 858653764}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1394054314}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &776086795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,8 +942,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0dc2867ca6e75ba41a0f43dc99e76b2e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1188,7 +1224,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 3.5, y: 3.5}
   m_EdgeRadius: 0
 --- !u!50 &793875204
 Rigidbody2D:
@@ -1247,6 +1283,7 @@ MonoBehaviour:
   _unitStatBaseList:
   - {fileID: 11400000, guid: 7c5103f24268c0941aec4635a209b2c7, type: 2}
   - {fileID: 11400000, guid: 994083438ba77af42a457a54234a0dc8, type: 2}
+  - {fileID: 11400000, guid: 67ab0526cc19aa04593d33becdc1319d, type: 2}
 --- !u!114 &825785490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,6 +1337,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1a60185a0989884cadf1fb474b54ae9, type: 2}
   - {fileID: 11400000, guid: b0310786c11711f4fbb77a2caadd8757, type: 2}
   - {fileID: 11400000, guid: 196b844c922c14140927f1e92de4e03b, type: 2}
+  - {fileID: 11400000, guid: 240ac5e16d331b74f81e33aec967ab19, type: 2}
+  - {fileID: 11400000, guid: 5421735b696de4b4693e147e0814f4ad, type: 2}
+  - {fileID: 11400000, guid: 3ed1bcdbd20956e4ea2fbbf162d644ba, type: 2}
+  - {fileID: 11400000, guid: 0be046340b643f9468e6bcc5ebf543ff, type: 2}
+  - {fileID: 11400000, guid: cb9314f172e2b7e499b0b77ca398cd24, type: 2}
 --- !u!114 &825785493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,6 +1432,63 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &878869489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878869491}
+  - component: {fileID: 878869490}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &878869490
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878869489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.81}
+  m_EdgeRadius: 0
+--- !u!4 &878869491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878869489}
+  m_LocalRotation: {x: 0, y: 0, z: -0.3663388, w: 0.93048155}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.98}
 --- !u!1 &894070902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1502,7 @@ GameObject:
   - component: {fileID: 894070905}
   - component: {fileID: 894070904}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Sa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
